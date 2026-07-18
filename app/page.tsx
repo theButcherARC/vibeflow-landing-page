@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/landing/navbar"
 import { Hero } from "@/components/landing/hero"
-import { TrustedBy } from "@/components/landing/trusted-by"
 import { Features } from "@/components/landing/features"
 import { HowItWorks } from "@/components/landing/how-it-works"
 import { Stats } from "@/components/landing/stats"
@@ -13,7 +12,6 @@ export default function VibeFlowLanding() {
       <Navbar />
       <main>
         <Hero />
-        <TrustedBy />
         <Features />
         <HowItWorks />
         <Stats />

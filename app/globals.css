@@ -39,6 +39,7 @@
   --color-accent-blue: var(--accent-blue);
   --color-success: var(--success);
   --color-brand: var(--brand);
+  --color-lavender: var(--lavender);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -72,6 +73,7 @@
   --accent-blue: #2563eb;
   --success: #16a34a;
   --brand: #7c3aed;
+  --lavender: #f1eef9;
   --chart-1: #2563eb;
   --chart-2: #16a34a;
   --chart-3: #6b7280;

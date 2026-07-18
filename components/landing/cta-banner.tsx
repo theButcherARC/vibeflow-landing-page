@@ -1,28 +1,40 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { ROUTES } from "@/constants/routes"
 import { Reveal } from "@/components/landing/reveal"
 
 export function CtaBanner() {
   return (
-    <section className="px-4 pb-24 sm:px-6">
+    <section className="px-4 py-16 sm:px-6">
       <Reveal className="mx-auto max-w-6xl">
-        <div className="rounded-[20px] bg-primary px-6 py-16 text-center sm:px-10">
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
-            Pay your whole team in one transaction
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-pretty text-lg leading-relaxed text-primary-foreground/70">
-            Launch VibeFlow and send your first batch of USDC or EURC in minutes. No approvals, no code.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Link
-              href={ROUTES.BULK_PAY}
-              className="inline-flex items-center gap-2 rounded-[14px] bg-card px-6 py-3.5 text-sm font-semibold text-foreground transition-transform duration-150 hover:scale-[1.02]"
-            >
-              Launch App
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+        <div className="flex flex-col items-center gap-8 rounded-[20px] bg-lavender px-6 py-12 sm:px-12 md:flex-row md:justify-between md:gap-6">
+          <div className="flex items-center gap-6">
+            <div className="relative hidden h-28 w-28 shrink-0 sm:block">
+              <Image
+                src="/images/rocket.png"
+                alt="Rocket launching"
+                fill
+                className="object-contain"
+                sizes="112px"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                The future of team payments is here.
+              </h2>
+              <p className="mt-2 text-pretty text-base leading-relaxed text-muted-foreground">
+                Join thousands of teams already building on VibeFlow.
+              </p>
+            </div>
           </div>
+          <Link
+            href={ROUTES.BULK_PAY}
+            className="inline-flex shrink-0 items-center gap-2 rounded-[14px] bg-brand px-6 py-3.5 text-sm font-semibold text-white transition-transform duration-150 hover:scale-[1.02]"
+          >
+            Get Started Now
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </Reveal>
     </section>
