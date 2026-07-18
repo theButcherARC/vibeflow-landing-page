@@ -87,22 +87,34 @@ export function Hero() {
 
           <div className="animate-fade-up delay-260 mt-10">
             <p className="text-sm text-muted-foreground">Trusted by teams building on the future</p>
-            <div className="mt-4 flex flex-wrap items-center gap-x-7 gap-y-3">
-              {LOGOS.map((logo) => (
-                <span
-                  key={logo}
-                  className="text-sm font-semibold tracking-tight text-foreground/60"
-                >
-                  {logo}
-                </span>
-              ))}
+            <div className="marquee-mask mt-4 flex overflow-hidden">
+              <div className="animate-marquee flex shrink-0 items-center gap-x-8 pr-8">
+                {[...LOGOS, ...LOGOS].map((logo, i) => (
+                  <span
+                    key={`${logo}-${i}`}
+                    className="whitespace-nowrap text-sm font-semibold tracking-tight text-foreground/50"
+                  >
+                    {logo}
+                  </span>
+                ))}
+              </div>
+              <div className="animate-marquee flex shrink-0 items-center gap-x-8 pr-8" aria-hidden="true">
+                {[...LOGOS, ...LOGOS].map((logo, i) => (
+                  <span
+                    key={`dup-${logo}-${i}`}
+                    className="whitespace-nowrap text-sm font-semibold tracking-tight text-foreground/50"
+                  >
+                    {logo}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         {/* Right column - dashboard mockup */}
         <div className="animate-fade-up delay-180">
-          <div className="overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_1px_2px_rgba(17,17,17,0.04),0_24px_60px_-24px_rgba(17,17,17,0.18)]">
+          <div className="animate-float-soft overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_1px_2px_rgba(17,17,17,0.04),0_24px_60px_-24px_rgba(17,17,17,0.18)]">
             <div className="flex">
               {/* Sidebar */}
               <aside className="hidden w-40 shrink-0 flex-col border-r border-border bg-card p-3 sm:flex">

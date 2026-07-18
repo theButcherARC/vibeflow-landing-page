@@ -1,11 +1,38 @@
 import { TrendingUp, Users, Zap, UsersRound } from "lucide-react"
 import { Reveal } from "@/components/landing/reveal"
+import { CountUp } from "@/components/landing/count-up"
 
 const STATS = [
-  { icon: TrendingUp, value: "$50M+", label: "Total Volume", iconClass: "bg-brand/20 text-brand" },
-  { icon: Users, value: "10K+", label: "Transactions", iconClass: "bg-success/20 text-success" },
-  { icon: Zap, value: "<1s", label: "Arc Finality", iconClass: "bg-accent-blue/20 text-accent-blue" },
-  { icon: UsersRound, value: "100+", label: "Recipients Per Tx", iconClass: "bg-orange-500/20 text-orange-400" },
+  {
+    icon: TrendingUp,
+    prefix: "$",
+    value: 50,
+    suffix: "M+",
+    label: "Total Volume",
+    iconClass: "bg-brand/20 text-brand",
+  },
+  {
+    icon: Users,
+    value: 10,
+    suffix: "K+",
+    label: "Transactions",
+    iconClass: "bg-success/20 text-success",
+  },
+  {
+    icon: Zap,
+    prefix: "<",
+    value: 1,
+    suffix: "s",
+    label: "Arc Finality",
+    iconClass: "bg-accent-blue/20 text-accent-blue",
+  },
+  {
+    icon: UsersRound,
+    value: 100,
+    suffix: "+",
+    label: "Recipients Per Tx",
+    iconClass: "bg-orange-500/20 text-orange-400",
+  },
 ]
 
 export function Stats() {
@@ -20,7 +47,9 @@ export function Stats() {
                   <stat.icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold tracking-tight text-primary-foreground">{stat.value}</p>
+                  <p className="text-2xl font-bold tracking-tight text-primary-foreground">
+                    <CountUp value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                  </p>
                   <p className="text-xs text-primary-foreground/60">{stat.label}</p>
                 </div>
               </div>
