@@ -42,18 +42,41 @@ const PAYMENTS = [
   { name: "Airdrop Winners", amount: "3,000.00", time: "5h ago" },
 ]
 
-const LOGOS = ["ARC", "MANTA NETWORK", "galxe", "SYNTHR", "LayerEdge"]
+const PARTNERS = [
+  { name: "Arc", tag: "Blockchain" },
+  { name: "Circle", tag: "Infrastructure" },
+  { name: "USDC", tag: "Stablecoin" },
+  { name: "EURC", tag: "Stablecoin" },
+  { name: "GroqAI", tag: "Inference" },
+]
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-12">
+      {/* ambient depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 -top-24 h-[420px] w-[420px] rounded-full bg-brand/10 blur-[120px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 top-40 h-[360px] w-[360px] rounded-full bg-accent-blue/10 blur-[120px]"
+      />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-12">
         {/* Left column */}
         <div className="max-w-xl">
-          <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5">
-            <Zap className="h-3.5 w-3.5 text-brand" />
+          <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 shadow-sm backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-pulse-ring absolute inset-0 rounded-full bg-brand" />
+              <span className="relative h-2 w-2 rounded-full bg-brand" />
+            </span>
             <span className="text-xs font-semibold text-foreground">
               Built on <span className="text-brand">Arc Blockchain</span>
+            </span>
+            <span className="mx-0.5 h-3 w-px bg-border" />
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground">
+              <Zap className="h-3 w-3 text-brand" />
+              Sub-second finality
             </span>
           </div>
 
@@ -71,14 +94,14 @@ export function Hero() {
           <div className="animate-fade-up delay-180 mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href={ROUTES.BULK_PAY}
-              className="inline-flex items-center justify-center gap-2 rounded-[14px] bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-150 hover:scale-[1.02]"
+              className="group inline-flex items-center justify-center gap-2 rounded-[14px] bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_1px_2px_rgba(17,17,17,0.2),0_12px_24px_-12px_rgba(17,17,17,0.5)] transition-all duration-150 hover:scale-[1.02] hover:shadow-[0_1px_2px_rgba(17,17,17,0.2),0_16px_32px_-12px_rgba(17,17,17,0.55)]"
             >
               Launch App
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5" />
             </Link>
             <Link
               href={ROUTES.HOW_IT_WORKS}
-              className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground transition-transform duration-150 hover:scale-[1.02]"
+              className="inline-flex items-center justify-center gap-2 rounded-[14px] border border-border bg-card px-6 py-3.5 text-sm font-semibold text-foreground shadow-sm transition-all duration-150 hover:scale-[1.02] hover:border-foreground/20"
             >
               See How It Works
               <PlayCircle className="h-4 w-4" />
@@ -86,28 +109,20 @@ export function Hero() {
           </div>
 
           <div className="animate-fade-up delay-260 mt-10">
-            <p className="text-sm text-muted-foreground">Trusted by teams building on the future</p>
-            <div className="marquee-mask mt-4 flex overflow-hidden">
-              <div className="animate-marquee flex shrink-0 items-center gap-x-8 pr-8">
-                {[...LOGOS, ...LOGOS].map((logo, i) => (
-                  <span
-                    key={`${logo}-${i}`}
-                    className="whitespace-nowrap text-sm font-semibold tracking-tight text-foreground/50"
-                  >
-                    {logo}
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Powered by</p>
+            <div className="mt-4 flex flex-wrap items-center gap-2.5">
+              {PARTNERS.map((partner) => (
+                <span
+                  key={partner.name}
+                  className="group inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 backdrop-blur transition-colors duration-150 hover:border-brand/40"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand transition-transform duration-150 group-hover:scale-125" />
+                  <span className="text-sm font-semibold tracking-tight text-foreground">{partner.name}</span>
+                  <span className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                    {partner.tag}
                   </span>
-                ))}
-              </div>
-              <div className="animate-marquee flex shrink-0 items-center gap-x-8 pr-8" aria-hidden="true">
-                {[...LOGOS, ...LOGOS].map((logo, i) => (
-                  <span
-                    key={`dup-${logo}-${i}`}
-                    className="whitespace-nowrap text-sm font-semibold tracking-tight text-foreground/50"
-                  >
-                    {logo}
-                  </span>
-                ))}
-              </div>
+                </span>
+              ))}
             </div>
           </div>
         </div>

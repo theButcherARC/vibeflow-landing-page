@@ -31,19 +31,21 @@ const FEATURES = [
 export function Features() {
   return (
     <section id="features" className="px-4 py-10 sm:px-6">
-      <Reveal className="mx-auto max-w-6xl">
-        <div className="grid gap-8 rounded-[20px] border border-border bg-card px-6 py-8 sm:px-10 md:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((feature) => (
-            <div key={feature.title} className="flex flex-col gap-3">
-              <div className={`flex h-11 w-11 items-center justify-center rounded-[14px] ${feature.iconClass}`}>
+      <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {FEATURES.map((feature, index) => (
+          <Reveal key={feature.title} delay={index * 70}>
+            <div className="group h-full rounded-[20px] border border-border bg-card p-6 shadow-[0_1px_2px_rgba(17,17,17,0.03)] transition-all duration-200 hover:-translate-y-1 hover:border-foreground/15 hover:shadow-[0_1px_2px_rgba(17,17,17,0.04),0_20px_40px_-24px_rgba(17,17,17,0.25)]">
+              <div
+                className={`flex h-11 w-11 items-center justify-center rounded-[14px] ${feature.iconClass} transition-transform duration-200 group-hover:scale-110`}
+              >
                 <feature.icon className="h-5 w-5" />
               </div>
-              <h3 className="text-sm font-semibold tracking-tight text-foreground">{feature.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
+              <h3 className="mt-4 text-sm font-semibold tracking-tight text-foreground">{feature.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
             </div>
-          ))}
-        </div>
-      </Reveal>
+          </Reveal>
+        ))}
+      </div>
     </section>
   )
 }
